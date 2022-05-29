@@ -1,0 +1,16 @@
+{
+  "translations": {
+    "notExistingKey": "Käännös ei ole saatavilla"
+  },
+  "solidabisErrors": {
+    "400": "Pakollinen eväste VoterId puuttuu"
+  },
+  "apiErrors": {
+    "unknown": "Tuntematon yhteys- tai palvelinvirhe",
+    "err_network": "Yhteysvirhe. Palvelimeen ei saatu yhteyttä. Tarkista internetyhteys",
+    "400": "Virheellinen sanoma"
+  },
+  "appErrors": {
+    "unknown": "Tuntematon sovellusvirhe"
+  }
+}

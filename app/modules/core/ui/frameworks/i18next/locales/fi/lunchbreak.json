@@ -1,0 +1,42 @@
+{
+  "pages": {
+    "dashboard": {
+      "link": "Haku",
+      "userSelection": {
+        "title": "Valintasi",
+        "text": "Työkollegat kaipaavat ääntäsi!"
+      },
+      "coWorkerSelection": {
+        "title": "Suosikit tänään",
+        "text": "Tälle päivälle ei ole äänestystuloksia!"
+      }
+    },
+    "search": {
+      "link": "Etusivu",
+      "input": {
+        "placeholder": "Etsi ravintoloita"
+      },
+      "helperText": {
+        "loading": "Ole hyvä odota. Kaupungit latautuvat...",
+        "empty": "Ei löytynyt yhtään lounasravintolaa kaupungissa {{ city }}. Yritä uudestaan toisella kaupungilla",
+        "error": {
+          "municipalities": "There was an error in attempt to retrieve municipalities. Please try again",
+          "restaurants": "Tapahtui virhe haettaessa lounasravintoloita alueella {{ city }}. Yritä uudestaan"
+        }
+      }
+    }
+  },
+  "components": {
+    "restaurantItem": {
+      "openingHoursUnavailable": "Aukioloaika ei ole saatavilla",
+      "dishNameUnavailable": "Annoksen nimi ei ole saatavilla",
+      "priceUnavailable": "Hinta ei ole saatavilla",
+      "menuUnavailable": "Ruokalista ei ole saatavilla",
+      "currentSelection": "Tämä on nykyinen valintasi"
+    },
+    "accordionExpandIcon": {
+      "votes_one": "{{ count }} ääni",
+      "votes_other": "{{ count }} ääntä"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  app:
+    container_name: solidabis-app
+    build:
+      context: ./app
+    ports:
+      - 80:80
+  server:
+    container_name: solidabis-server
+    build:
+      context: ./server
+    ports:
+      - 8080:8080

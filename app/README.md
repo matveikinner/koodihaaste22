@@ -1,48 +1,3 @@
-# Solidabis koodihaaste 2022
-
-Tehtävänäsi on toteuttaa lounaspaikkaäänestyssovelluksen frontend valmista APIa vasten (työkalut saat valita itse).
-Arvosteluperusteet tärkeysjärjestyksessä:
-
-1.  Ratkaisun oikeellisuus
-    1. ravintoloiden haku paikkakuntakohtaisesti
-    2. äänen antaminen, muuttaminen ja poistaminen
-    3. äänestystulosten esittäminen reaaliajassa
-2.  Testit
-3.  Ratkaisun selkeys ja yksinkertaisuus
-4.  Käyttöliittymäratkaisut
-
-Tässä repositoryssä on valmis Spring Bootilla toteutettu backend, joka toteuttaa lounaspaikkojen
-haku- ja äänestyslogiikan käyttäen Lounaat.info -palvelua.
-
-Backendin ajamiseen tarvitset JDK:n (versio>=11) ja/tai Dockerin asennettuna työasemallesi.
-
-Backendin käynnistys:
-
-    ./gradlew bootRun
-
-tai Dockerilla:
-
-    docker run -p 8080:8080 solidabis/koodihaaste22:latest
-
-Tutustu API-dokumentaatioon http://localhost:8080/swagger-ui.html
-
-Päivä/selainkohtainen äänioikeus on toteutettu HTTP-only -cookiella.
-
-# Palautus
-
-_Forkkaa tästä repositorystä oma julkinen ratkaisureposi_ ja lähetä linkki 31.5.2022 mennessä sähköpostilla osoitteeseen
-koodihaaste@solidabis.com. Muokkaa README.md -tiedostoa siten, että siitä ilmenee vastauksen
-tarkastelua helpottavat tiedot, kuten käyttämäsi teknologiat ja muutaman lauseen kuvaus tekemistäsi
-ratkaisuista. Voit myös julkaista ratkaisusi esim. Herokuun, muista liittää linkki ja mahdolliset salasanat sähköpostiin!
-
-Backendin muuttaminen esim. autentikoinnin toteuttamiseksi on sallittua.
-
-Kerro samalla haluatko osallistua vain kilpailuun ja arvontaan, vai haluatko Solidabiksen
-ottavan yhteyttä myös työtarjouksiin liittyen. Se ei tarkoita, että sinulle lähetettäisiin roskapostia, vaan nimensä
-mukaisesti esimerkiksi kutsu työhaastatteluun. Voit halutessasi
-osallistua koodihasteeseen myös ilman, että haluat ottaa palkintoa
-vastaan tai osallistua arvontaan.
-
 # Food Is Good App
 
 > Onko työ/kaveriporukassasi eripuraa ja "nokkapokkaa" missä tänään syödään? Ei hätää!
@@ -74,10 +29,10 @@ The deployment have been done to Azure App Services with simple GitLab CI / CD f
 
 ## Installation
 
-Most of the instructions below assume that current working directory is proper one. In short for Makefile commands and Docker compose assumes working directory as root (./). Docker build and run as well as Yarn commands assume working directory as app (./app)
+Most of the instructions below assume that current working directory is proper one
 
-- App launches on localhost port 80
-- Server launches on localhost port 8080
+- "Food Is Good" user interface launches on localhost port 80
+- "Food Is Good" server launches on localhost port 8080
 
 ### Scripts
 
@@ -146,24 +101,19 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 - [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
 - Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
 
-![Flux Pattern](app/docs/images/flux_pattern.jpg)
+![Flux Pattern](docs/images/flux_pattern.jpg)
 
-![Clean Architecture](app/docs/images/clean_architecture.jpg)
+![Clean Architecture](docs/images/clean_architecture.jpg)
 
 ### Description
 
 Simple app where user can see their vote and their co-workers vote. User can search lunch restaurants by city, click to see their location, menu, votes and which lunch restaurant is their selection for the current day. User can also choose language between English and Finnish.
 
-#### FAQ
-
-Q: How to vote?
-A: Simply click on white item area where there are no icons overlapping. Yes, the design UI / UX in unclear on this one. Could have made tooltips on item hover but...
-
 ### Design
 
-![Dashboard](app/docs/design/dashboard.jpg)
+![Dashboard](docs/design/dashboard.jpg)
 
-![Search](app/docs/design/search.jpg)
+![Search](docs/design/search.jpg)
 
 ### Features
 
@@ -171,7 +121,7 @@ A: Simply click on white item area where there are no icons overlapping. Yes, th
 
 - Decent UI / UX (with Material UI Imo though I'm no professional when it comes to design) including all basic features as per assignment. However, Material UI is rather poor on accessibility. Theme color is the same as Solidabis uses in their brandmark
 
-- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (77.34% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
+- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (75.53% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
 
 - Various scripts and deployment options to make it easy to run the application (though relies mostly on Docker)
 
@@ -196,8 +146,6 @@ A: Simply click on white item area where there are no icons overlapping. Yes, th
 - It can be unclear to how to use the application as it might not be obvious that simply by clicking on the item selects it. Also to add to the confusion by clicking on different areas the item either open up a Google Maps location of the restaurant or expands to show the menu
 
 - Most likely an overkill overall architecture / architectural patterns for such an simple app
-
-- Did not properly validate though when placing votes near midnight local time it seems that though local time is already on next day the server assumes different timezone and returns date as previous day. The hypothesis is that server follows Greenwich Mean Time (GMT) while UI local time is Eastern European Summer Time (GMT+0300)
 
 ## Documentation
 

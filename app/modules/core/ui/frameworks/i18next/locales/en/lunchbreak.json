@@ -1,0 +1,42 @@
+{
+  "pages": {
+    "dashboard": {
+      "link": "Search",
+      "userSelection": {
+        "title": "Your pick",
+        "text": "Your co-workers are missing your vote!"
+      },
+      "coWorkerSelection": {
+        "title": "Today's top picks",
+        "text": "There are no votes for today!"
+      }
+    },
+    "search": {
+      "link": "Dashboard",
+      "input": {
+        "placeholder": "Search restaurants"
+      },
+      "helperText": {
+        "loading": "Please wait. Cities are loading...",
+        "empty": "There are no lunch restaurants in {{ city }}. Please select another city",
+        "error": {
+          "municipalities": "There was an error in attempt to retrieve municipalities. Please try again",
+          "restaurants": "There was an error in attempt to retrieve lunch restaurants in {{ city }}. Please try again"
+        }
+      }
+    }
+  },
+  "components": {
+    "restaurantItem": {
+      "openingHoursUnavailable": "Opening hours unavailable",
+      "dishNameUnavailable": "Dish name unavailable",
+      "priceUnavailable": "Price unavailable",
+      "menuUnavailable": "Menu unavailable",
+      "currentSelection": "This is your current selection"
+    },
+    "accordionExpandIcon": {
+      "votes_one": "{{ count }} vote",
+      "votes_other": "{{ count }} votes"
+    }
+  }
+}

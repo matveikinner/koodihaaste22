@@ -1,0 +1,16 @@
+{
+  "translations": {
+    "notExistingKey": "Translation unavailable"
+  },
+  "solidabisErrors": {
+    "400": "Required cookie VoterId missing"
+  },
+  "apiErrors": {
+    "unknown": "Unknown connection or server error",
+    "err_network": "Network error. Unable to reach the server. Please check your internet connection",
+    "400": "Bad request"
+  },
+  "appErrors": {
+    "unknown": "Unknown application error"
+  }
+}

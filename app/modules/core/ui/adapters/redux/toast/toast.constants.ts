@@ -1,0 +1,1 @@
+export const TOAST_SLICE_KEY = "TOAST_SLICE_KEY";

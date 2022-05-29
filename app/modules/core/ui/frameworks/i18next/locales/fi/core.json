@@ -1,0 +1,19 @@
+{
+  "pages": {
+    "errorFallback": {
+      "text": "Tapahtui odottamaton sovellusvirhe. Näin ei pitäisi tapahtua. Kokeile ladata sivu uudestaan tai ota yhteyttä sivuston ylläpitäjään",
+      "contactInformation": "hello@matveikinner.com"
+    }
+  },
+  "components": {
+    "title": {
+      "text": "Sosiokratiaa lounaspaikka äänestykseen. Hae sekä äänestä suosikki lounaspaikkaasi"
+    }
+  },
+  "shared": {
+    "vote": {
+      "save": "Äänestystuloksesi on tallennettu onnistuneesti!",
+      "update": "Äänestystuloksesi on päivitetty onnistuneesti!"
+    }
+  }
+}

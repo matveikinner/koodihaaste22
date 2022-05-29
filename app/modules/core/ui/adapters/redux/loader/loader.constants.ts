@@ -1,0 +1,1 @@
+export const LOADER_SLICE_KEY = "LOADER_SLICE_KEY";

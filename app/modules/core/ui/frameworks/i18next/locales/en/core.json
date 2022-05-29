@@ -1,0 +1,19 @@
+{
+  "pages": {
+    "errorFallback": {
+      "text": "There has been an unexpected application error. Try to refresh the page or contact the administrator",
+      "contactInformation": "hello@matveikinner.com"
+    }
+  },
+  "components": {
+    "title": {
+      "text": "Sociacracy to lunch voting. Search and vote for your favourite lunch restaurants"
+    }
+  },
+  "shared": {
+    "vote": {
+      "save": "Your vote has been successfully saved!",
+      "update": "Your vote has been successfully updated!"
+    }
+  }
+}

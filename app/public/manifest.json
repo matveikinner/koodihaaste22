@@ -1,0 +1,64 @@
+{
+  "id": "Food is Good",
+  "name": "Food is Good",
+  "short_name": "Food is Good",
+  "description": "Sociacracy to lunch voting",
+  "start_url": "/",
+  "scope": ".",
+  "background_color": "#F6416C",
+  "theme_color": "#F6416C",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "assets/images/food_is_good_16_logo.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "assets/images/food_is_good_24_logo.png",
+      "type": "image/png",
+      "sizes": "24x24"
+    },
+    {
+      "src": "assets/images/food_is_good_32_logo.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "assets/images/food_is_good_48_logo.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "assets/images/food_is_good_64_logo.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "assets/images/food_is_good_72_logo.png",
+      "type": "image/png",
+      "sizes": "72x72"
+    },
+    {
+      "src": "assets/images/food_is_good_96_logo.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "assets/images/food_is_good_128_logo.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "assets/images/food_is_good_256_logo.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "assets/images/food_is_good_512_logo.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

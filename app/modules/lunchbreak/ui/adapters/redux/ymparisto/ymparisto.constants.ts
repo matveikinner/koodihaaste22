@@ -1,0 +1,1 @@
+export const YMPARISTO_SLICE_KEY = "YMPARISTO";
