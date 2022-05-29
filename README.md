@@ -141,7 +141,7 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 ### Architectural Patterns
 
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI. I treat React for what it is; an UI library
 - [Flux Pattern](https://facebook.github.io/flux/docs/in-depth-overview/) with Redux, ReduxToolkit and Redux Saga to manage side-effects
 - [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
 - Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
@@ -157,9 +157,16 @@ Simple app where user can see their vote and their co-workers vote. User can sea
 #### FAQ
 
 Q: How to vote?
+
 A: Simply click on white item area where there are no icons overlapping. Yes, the design UI / UX in unclear on this one. Could have made tooltips on item hover but...
 
+Q: How to remove vote?
+
+A: As above simply click on an item which is your current selection to remove the selection
+
 ### Design
+
+Design is made by me and therefore is initial and not perfect UI / UX wise
 
 ![Dashboard](app/docs/design/dashboard.jpg)
 

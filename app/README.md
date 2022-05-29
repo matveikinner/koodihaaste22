@@ -1,38 +1,38 @@
+
 # Food Is Good App
 
 > Onko työ/kaveriporukassasi eripuraa ja "nokkapokkaa" missä tänään syödään? Ei hätää!
->
+> 
 > Tehtävänäsi on demokratisoida lounaspaikan valintaprosessi
 > toteuttamalla äänestyssovelluksen frontend.
->
+> 
 > Tehtävän toteutusta varten saat valmiin backendin, jonka mukana
 > tulevaan API-dokumentaatioon pääset tutustumaan.
->
+> 
 > Toteutuksessa käytettävät teknologiat ovat vapaasti päätettävissäsi.
->
+> 
 > Sovelluksessa tulee olla seuraavat toiminnot:
->
-> - Lounaspaikkojen haku
-> - Äänen antaminen, muuttaminen ja poistaminen
-> - Päivän äänestystuloksen esittäminen reaaliajassa
->
+> 
+> -   Lounaspaikkojen haku
+> -   Äänen antaminen, muuttaminen ja poistaminen
+> -   Päivän äänestystuloksen esittäminen reaaliajassa
+> 
 > Katso vielä lisätiedot tehtävän arviointikriteereistä sekä tarkempi
 > ohje siitä, mitä palautuksessa tulee huomioida.
->
+> 
 > Onnea koodihaasteeseen ja mukavaa (kesä)koodailua!
 
 ## Preview
-
 You can find live deployment at https://solidabis-app.azurewebsites.net/ for the user interface and https://solidabis-server.azurewebsites.net/ for the server.
 
 The deployment have been done to Azure App Services with simple GitLab CI / CD functionalities which deploy to Azure Container Registry which in turn deploys with simple hooks the latest images.
 
-## Installation
+## Installation  
 
-Most of the instructions below assume that current working directory is proper one
+Most of the instructions below assume that current working directory is proper one. In short for Makefile commands and Docker compose assumes working directory as root (./). Docker build and run as well as Yarn commands assume working directory as app (./app)
 
-- "Food Is Good" user interface launches on localhost port 80
-- "Food Is Good" server launches on localhost port 8080
+- App launches on localhost port 80
+- Server launches on localhost port 8080
 
 ### Scripts
 
@@ -40,7 +40,7 @@ Most of the instructions below assume that current working directory is proper o
 
 To launch application containers with tiny shell CLI you can use Makefile `make` commands (if not on Unix system see [StackOverflow](https://stackoverflow.com/a/32127632/12660598))
 
-To launch / orchestrate all Docker containers run
+To launch / orchestrate all Docker containers run  
 
     make docker
 
@@ -66,11 +66,11 @@ To launch / orchestrate all Docker containers run
 
 #### Yarn
 
-To install dependencies run
+To install dependencies run  
 
     yarn install
 
-To run development version of the application with Webpack run
+To run development version of the application with Webpack run  
 
     yarn start:dev
 
@@ -96,10 +96,10 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 ### Architectural Patterns
 
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI
-- [Flux Pattern](https://facebook.github.io/flux/docs/in-depth-overview/) with Redux, ReduxToolkit and Redux Saga to manage side-effects
-- [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
-- Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
+ - [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI. I treat React for what it is; an UI library
+ - [Flux Pattern](https://facebook.github.io/flux/docs/in-depth-overview/) with Redux, ReduxToolkit and Redux Saga to manage side-effects
+ - [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
+ - Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
 
 ![Flux Pattern](docs/images/flux_pattern.jpg)
 
@@ -109,7 +109,19 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 Simple app where user can see their vote and their co-workers vote. User can search lunch restaurants by city, click to see their location, menu, votes and which lunch restaurant is their selection for the current day. User can also choose language between English and Finnish.
 
-### Design
+#### FAQ
+
+ Q: How to vote?
+ 
+ A: Simply click on white item area where there are no icons overlapping. Yes, the design UI / UX in unclear on this one. Could have made tooltips on item hover but...
+
+Q: How to remove vote?
+
+A: As above simply click on an item which is your current selection to remove the selection
+
+### Design 
+
+Design is made by me and therefore is initial and not perfect UI / UX wise
 
 ![Dashboard](docs/design/dashboard.jpg)
 
@@ -121,7 +133,7 @@ Simple app where user can see their vote and their co-workers vote. User can sea
 
 - Decent UI / UX (with Material UI Imo though I'm no professional when it comes to design) including all basic features as per assignment. However, Material UI is rather poor on accessibility. Theme color is the same as Solidabis uses in their brandmark
 
-- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (75.53% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
+- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (77.34% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
 
 - Various scripts and deployment options to make it easy to run the application (though relies mostly on Docker)
 
@@ -146,6 +158,8 @@ Simple app where user can see their vote and their co-workers vote. User can sea
 - It can be unclear to how to use the application as it might not be obvious that simply by clicking on the item selects it. Also to add to the confusion by clicking on different areas the item either open up a Google Maps location of the restaurant or expands to show the menu
 
 - Most likely an overkill overall architecture / architectural patterns for such an simple app
+
+- Did not properly validate though when placing votes near midnight local time it seems that though local time is already on next day the server assumes different timezone and returns date as previous day. The hypothesis is that server follows Greenwich Mean Time (GMT) while UI local time is Eastern European Summer Time (GMT+0300)
 
 ## Documentation
 
@@ -195,7 +209,7 @@ S --> P(Production)
 
 The ticket branch can branch out from either development branch or feature branch. Once complete the ticket branch merges always back to its parent branch. The only exceptions are unconventional situations where there is requirement to ex. cherry pick a particular commit higher in the tree to patch issues which require immediate attention. The ticket branch name derives from Jira board in use.
 
-##### Feature
+##### Feature  
 
 The feature branch can branch out only from the development branch. Once complete the feature branch merges always back to its parent branch. The feature branch name has "feature-" prefix which follows brief feature description ex. feature-password-reset.
 
@@ -215,7 +229,7 @@ Format
 
     git tag -a <semver>_rc<number> -m "<message>"
 
-As an example
+As an example  
 
     git tag -a 1.0.0_rc1 -m "Release 1.0.0~rc1 to staging"
 
@@ -227,7 +241,7 @@ Format
 
     git tag -a <semver> -m "<message>"
 
-As an example
+As an example  
 
     git tag -a 1.0.0 -m "Release 1.0.0 to production"
 
