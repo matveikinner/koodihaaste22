@@ -41,32 +41,32 @@ const SearchPage: FunctionComponent = () => {
   const isMunicipalitiesError = municipalitiesMeta.status === MetaStatusEnum.FAILED;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleOnClickRestaurantSelection = (restaurantId: string) => (event: MouseEvent<HTMLDivElement>) =>
+  const handleOnClickRestaurantSelection = (restaurantId: string) => (event: MouseEvent<HTMLButtonElement>) =>
     dispatch(submitVoteRequest(restaurantId));
 
   const getHelperText = () => {
     switch (true) {
       case isMunicipalitiesLoading:
         return (
-          <Typography variant="link" sx={{ color: "customTheme.neutral" }}>
+          <Typography data-testid="search-helper-text" variant="link" sx={{ color: "customTheme.neutral" }}>
             {t(["lunchbreak:pages.search.helperText.loading", "error:translations.notExistingKey"])}
           </Typography>
         );
       case isMunicipalitiesError:
         return (
-          <Typography variant="link" sx={{ color: "customTheme.error" }}>
+          <Typography data-testid="search-helper-text" variant="link" sx={{ color: "customTheme.highlightRed" }}>
             {t(["lunchbreak:pages.search.helperText.error.municipalities", "error:translations.notExistingKey"])}
           </Typography>
         );
       case isRestaurantsEmpty:
         return (
-          <Typography variant="link" sx={{ color: "customTheme.neutral" }}>
+          <Typography data-testid="search-helper-text" variant="link" sx={{ color: "customTheme.neutral" }}>
             {t(["lunchbreak:pages.search.helperText.empty", "error:translations.notExistingKey"], { city: value })}
           </Typography>
         );
       case isRestaurantsError:
         return (
-          <Typography variant="link" sx={{ color: "customTheme.error" }}>
+          <Typography data-testid="search-helper-text" variant="link" sx={{ color: "customTheme.highlightRed" }}>
             {t(["lunchbreak:pages.search.helperText.error.restaurants", "error:translations.notExistingKey"], {
               city: value,
             })}
@@ -128,6 +128,7 @@ const SearchPage: FunctionComponent = () => {
         ) : (
           restaurants
             .filter((restaurant) => restaurant.city === value)
+            .sort((a, b) => b.votes - a.votes)
             .map(({ id, ...rest }) => (
               <RestaurantItem
                 key={id}

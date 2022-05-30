@@ -1,33 +1,78 @@
+# Solidabis koodihaaste 2022
+
+Tehtävänäsi on toteuttaa lounaspaikkaäänestyssovelluksen frontend valmista APIa vasten (työkalut saat valita itse).
+Arvosteluperusteet tärkeysjärjestyksessä:
+
+1.  Ratkaisun oikeellisuus
+    1. ravintoloiden haku paikkakuntakohtaisesti
+    2. äänen antaminen, muuttaminen ja poistaminen
+    3. äänestystulosten esittäminen reaaliajassa
+2.  Testit
+3.  Ratkaisun selkeys ja yksinkertaisuus
+4.  Käyttöliittymäratkaisut
+
+Tässä repositoryssä on valmis Spring Bootilla toteutettu backend, joka toteuttaa lounaspaikkojen
+haku- ja äänestyslogiikan käyttäen Lounaat.info -palvelua.
+
+Backendin ajamiseen tarvitset JDK:n (versio>=11) ja/tai Dockerin asennettuna työasemallesi.
+
+Backendin käynnistys:
+
+    ./gradlew bootRun
+
+tai Dockerilla:
+
+    docker run -p 8080:8080 solidabis/koodihaaste22:latest
+
+Tutustu API-dokumentaatioon http://localhost:8080/swagger-ui.html
+
+Päivä/selainkohtainen äänioikeus on toteutettu HTTP-only -cookiella.
+
+# Palautus
+
+_Forkkaa tästä repositorystä oma julkinen ratkaisureposi_ ja lähetä linkki 31.5.2022 mennessä sähköpostilla osoitteeseen
+koodihaaste@solidabis.com. Muokkaa README.md -tiedostoa siten, että siitä ilmenee vastauksen
+tarkastelua helpottavat tiedot, kuten käyttämäsi teknologiat ja muutaman lauseen kuvaus tekemistäsi
+ratkaisuista. Voit myös julkaista ratkaisusi esim. Herokuun, muista liittää linkki ja mahdolliset salasanat sähköpostiin!
+
+Backendin muuttaminen esim. autentikoinnin toteuttamiseksi on sallittua.
+
+Kerro samalla haluatko osallistua vain kilpailuun ja arvontaan, vai haluatko Solidabiksen
+ottavan yhteyttä myös työtarjouksiin liittyen. Se ei tarkoita, että sinulle lähetettäisiin roskapostia, vaan nimensä
+mukaisesti esimerkiksi kutsu työhaastatteluun. Voit halutessasi
+osallistua koodihasteeseen myös ilman, että haluat ottaa palkintoa
+vastaan tai osallistua arvontaan.
 
 # Food Is Good App
 
 > Onko työ/kaveriporukassasi eripuraa ja "nokkapokkaa" missä tänään syödään? Ei hätää!
-> 
+>
 > Tehtävänäsi on demokratisoida lounaspaikan valintaprosessi
 > toteuttamalla äänestyssovelluksen frontend.
-> 
+>
 > Tehtävän toteutusta varten saat valmiin backendin, jonka mukana
 > tulevaan API-dokumentaatioon pääset tutustumaan.
-> 
+>
 > Toteutuksessa käytettävät teknologiat ovat vapaasti päätettävissäsi.
-> 
+>
 > Sovelluksessa tulee olla seuraavat toiminnot:
-> 
-> -   Lounaspaikkojen haku
-> -   Äänen antaminen, muuttaminen ja poistaminen
-> -   Päivän äänestystuloksen esittäminen reaaliajassa
-> 
+>
+> - Lounaspaikkojen haku
+> - Äänen antaminen, muuttaminen ja poistaminen
+> - Päivän äänestystuloksen esittäminen reaaliajassa
+>
 > Katso vielä lisätiedot tehtävän arviointikriteereistä sekä tarkempi
 > ohje siitä, mitä palautuksessa tulee huomioida.
-> 
+>
 > Onnea koodihaasteeseen ja mukavaa (kesä)koodailua!
 
 ## Preview
+
 You can find live deployment at https://solidabis-app.azurewebsites.net/ for the user interface and https://solidabis-server.azurewebsites.net/ for the server.
 
 The deployment have been done to Azure App Services with simple GitLab CI / CD functionalities which deploy to Azure Container Registry which in turn deploys with simple hooks the latest images.
 
-## Installation  
+## Installation
 
 Most of the instructions below assume that current working directory is proper one. In short for Makefile commands and Docker compose assumes working directory as root (./). Docker build and run as well as Yarn commands assume working directory as app (./app)
 
@@ -40,7 +85,7 @@ Most of the instructions below assume that current working directory is proper o
 
 To launch application containers with tiny shell CLI you can use Makefile `make` commands (if not on Unix system see [StackOverflow](https://stackoverflow.com/a/32127632/12660598))
 
-To launch / orchestrate all Docker containers run  
+To launch / orchestrate all Docker containers run
 
     make docker
 
@@ -66,11 +111,11 @@ To launch / orchestrate all Docker containers run
 
 #### Yarn
 
-To install dependencies run  
+To install dependencies run
 
     yarn install
 
-To run development version of the application with Webpack run  
+To run development version of the application with Webpack run
 
     yarn start:dev
 
@@ -96,10 +141,10 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 ### Architectural Patterns
 
- - [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI. I treat React for what it is; an UI library
- - [Flux Pattern](https://facebook.github.io/flux/docs/in-depth-overview/) with Redux, ReduxToolkit and Redux Saga to manage side-effects
- - [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
- - Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI. I treat React for what it is; an UI library (you [reference yourself](https://www.solidabis.com/ajankohtaista/koodihaasteen-tulokset/) on your website Clean Code by Robert C. Martin so here it is - adaptation to React - you are welcome)
+- [Flux Pattern](https://facebook.github.io/flux/docs/in-depth-overview/) with Redux, ReduxToolkit and Redux Saga to manage side-effects
+- [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
+- Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
 
 ![Flux Pattern](docs/images/flux_pattern.jpg)
 
@@ -109,19 +154,7 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 Simple app where user can see their vote and their co-workers vote. User can search lunch restaurants by city, click to see their location, menu, votes and which lunch restaurant is their selection for the current day. User can also choose language between English and Finnish.
 
-#### FAQ
-
- Q: How to vote?
- 
- A: Simply click on white item area where there are no icons overlapping. Yes, the design UI / UX in unclear on this one. Could have made tooltips on item hover but...
-
-Q: How to remove vote?
-
-A: As above simply click on an item which is your current selection to remove the selection
-
-### Design 
-
-Design is made by me and therefore is initial and not perfect UI / UX wise
+### Design
 
 ![Dashboard](docs/design/dashboard.jpg)
 
@@ -131,17 +164,17 @@ Design is made by me and therefore is initial and not perfect UI / UX wise
 
 - Modern linter setup with ESLint and best practices which lints code styles, commit messages and runs tests. Overall professional TypeScript setup with all the syntactic sugar it provides such as Module Augmentation to extends and / or override ex. Material UI theme types
 
-- Decent UI / UX (with Material UI Imo though I'm no professional when it comes to design) including all basic features as per assignment. However, Material UI is rather poor on accessibility. Theme color is the same as Solidabis uses in their brandmark
+- Decent UI / UX (with Material UI Imo though I'm no professional when it comes to design) including all basic features as per assignment. However, Material UI is rather poor on accessibility. Theme color is the same as Solidabis uses in their brandmark. The final design differs from original images above as ex. eventually I though it better to have a separate button to vote vs. clicking on a list item itself as it's not obvious
 
-- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (77.34% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
+- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (79.08% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
 
 - Various scripts and deployment options to make it easy to run the application (though relies mostly on Docker)
 
 - PWA support / compatibility with Workbox which check at least Google Chrome's installability requirements. In other words feel free to install this app on your machine or mobile device and give it a try
 
-- Retrieves updates to voting results every 5 minutes from the server with long polling using custom hook (TS rewrite from the [original solution](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) by Dan Abramov) as the given server implementation does not have any websocket support. For an example how I would implement Websockets with React see my accepted Stackoverflow [answer](https://stackoverflow.com/a/67201479/12660598)
+- Retrieves updates to voting results every minute from the server with long polling (DDoS FTW) using custom hook (TS rewrite from the [original solution](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) by Dan Abramov) as the given server implementation does not have any websocket support. For an example how I would implement Websockets with React see my accepted Stackoverflow [answer](https://stackoverflow.com/a/67201479/12660598)
 
-- JSDoc comments on most of the core functions
+- JSDoc comments on many of the core functions
 
 - Retrieves Finnish cities / municipalities from common open Finnish API and persists results after initial retrieval to Indexed database (in "real life" scenario this should have expiration time to refetch data from time to time)
 
@@ -209,7 +242,7 @@ S --> P(Production)
 
 The ticket branch can branch out from either development branch or feature branch. Once complete the ticket branch merges always back to its parent branch. The only exceptions are unconventional situations where there is requirement to ex. cherry pick a particular commit higher in the tree to patch issues which require immediate attention. The ticket branch name derives from Jira board in use.
 
-##### Feature  
+##### Feature
 
 The feature branch can branch out only from the development branch. Once complete the feature branch merges always back to its parent branch. The feature branch name has "feature-" prefix which follows brief feature description ex. feature-password-reset.
 
@@ -229,7 +262,7 @@ Format
 
     git tag -a <semver>_rc<number> -m "<message>"
 
-As an example  
+As an example
 
     git tag -a 1.0.0_rc1 -m "Release 1.0.0~rc1 to staging"
 
@@ -241,7 +274,7 @@ Format
 
     git tag -a <semver> -m "<message>"
 
-As an example  
+As an example
 
     git tag -a 1.0.0 -m "Release 1.0.0 to production"
 

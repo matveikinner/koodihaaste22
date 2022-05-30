@@ -141,7 +141,7 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 ### Architectural Patterns
 
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI. I treat React for what it is; an UI library
+- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) adaptation to modern single-page applications with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles using [Inversify](https://inversify.io/) for IoC and DI. I treat React for what it is; an UI library (you [reference yourself](https://www.solidabis.com/ajankohtaista/koodihaasteen-tulokset/) on your website Clean Code by Robert C. Martin so here it is - adaptation to React - you are welcome)
 - [Flux Pattern](https://facebook.github.io/flux/docs/in-depth-overview/) with Redux, ReduxToolkit and Redux Saga to manage side-effects
 - [Repository Pattern](https://martinfowler.com/eaaCatalog/repository.html) for managing data retrieval and persistence from different resources
 - Mismash combination of OOP principles together with FP / FRP libraries such as RxJS and Ramda as long as its clean and consistent
@@ -154,19 +154,7 @@ You can find static index.html which Jest generates in ./coverage/lcov-report/in
 
 Simple app where user can see their vote and their co-workers vote. User can search lunch restaurants by city, click to see their location, menu, votes and which lunch restaurant is their selection for the current day. User can also choose language between English and Finnish.
 
-#### FAQ
-
-Q: How to vote?
-
-A: Simply click on white item area where there are no icons overlapping. Yes, the design UI / UX in unclear on this one. Could have made tooltips on item hover but...
-
-Q: How to remove vote?
-
-A: As above simply click on an item which is your current selection to remove the selection
-
 ### Design
-
-Design is made by me and therefore is initial and not perfect UI / UX wise
 
 ![Dashboard](app/docs/design/dashboard.jpg)
 
@@ -176,17 +164,17 @@ Design is made by me and therefore is initial and not perfect UI / UX wise
 
 - Modern linter setup with ESLint and best practices which lints code styles, commit messages and runs tests. Overall professional TypeScript setup with all the syntactic sugar it provides such as Module Augmentation to extends and / or override ex. Material UI theme types
 
-- Decent UI / UX (with Material UI Imo though I'm no professional when it comes to design) including all basic features as per assignment. However, Material UI is rather poor on accessibility. Theme color is the same as Solidabis uses in their brandmark
+- Decent UI / UX (with Material UI Imo though I'm no professional when it comes to design) including all basic features as per assignment. However, Material UI is rather poor on accessibility. Theme color is the same as Solidabis uses in their brandmark. The final design differs from original images above as ex. eventually I though it better to have a separate button to vote vs. clicking on a list item itself as it's not obvious
 
-- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (77.34% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
+- Decent units tests with React Testing Library, Jest and Mock Service Worker covering most of the codebase (79.08% lines). However, the philosophy for testing is that of React Testing Library which also Redux encourages on their [official website](https://redux.js.org/usage/writing-tests). For more information on this see React Testing Library [official website](https://testing-library.com/docs/guiding-principles/). In short, there are no tests for the underlying implementation details as these can change and should require tests only for critical applications where availability and particular logic is of paramount importance
 
 - Various scripts and deployment options to make it easy to run the application (though relies mostly on Docker)
 
 - PWA support / compatibility with Workbox which check at least Google Chrome's installability requirements. In other words feel free to install this app on your machine or mobile device and give it a try
 
-- Retrieves updates to voting results every 5 minutes from the server with long polling using custom hook (TS rewrite from the [original solution](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) by Dan Abramov) as the given server implementation does not have any websocket support. For an example how I would implement Websockets with React see my accepted Stackoverflow [answer](https://stackoverflow.com/a/67201479/12660598)
+- Retrieves updates to voting results every minute from the server with long polling (DDoS FTW) using custom hook (TS rewrite from the [original solution](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) by Dan Abramov) as the given server implementation does not have any websocket support. For an example how I would implement Websockets with React see my accepted Stackoverflow [answer](https://stackoverflow.com/a/67201479/12660598)
 
-- JSDoc comments on most of the core functions
+- JSDoc comments on many of the core functions
 
 - Retrieves Finnish cities / municipalities from common open Finnish API and persists results after initial retrieval to Indexed database (in "real life" scenario this should have expiration time to refetch data from time to time)
 

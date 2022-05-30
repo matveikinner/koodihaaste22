@@ -4,7 +4,7 @@ const muiButtonOverrides: ThemeOptions["components"] = {
   MuiButton: {
     styleOverrides: {
       iconSizeSmall: {
-        "& > *:first-child": {
+        "& > *:first-of-type": {
           fontSize: 16,
         },
       },

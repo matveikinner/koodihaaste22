@@ -1,7 +1,11 @@
 import { FunctionComponent } from "react";
 import { useTranslation } from "react-i18next";
 import { Box, Chip } from "@mui/material";
-import { UnfoldMore as UnfoldMoreIcon, UnfoldLess as UnfoldLessIcon } from "@mui/icons-material";
+import {
+  UnfoldMore as UnfoldMoreIcon,
+  UnfoldLess as UnfoldLessIcon,
+  EmojiEvents as EmojiEventsIcon,
+} from "@mui/icons-material";
 import AccordionExpandIconProps from "./AccordionExpandIcon.types";
 
 const AccordionExpandIcon: FunctionComponent<AccordionExpandIconProps> = ({
@@ -30,7 +34,7 @@ const AccordionExpandIcon: FunctionComponent<AccordionExpandIconProps> = ({
         <Chip
           label={t("lunchbreak:components.accordionExpandIcon.votes", { count: votes })}
           size="small"
-          sx={{ backgroundColor: "customTheme.highlightGreen", mr: 2 }}
+          sx={{ color: "customTheme.highlightGreenAlt", backgroundColor: "customTheme.highlightGreen", mr: 2 }}
         />
       )}
       <Box className="expandIconWrapper" sx={{ display: "flex", alignItems: "center" }}>

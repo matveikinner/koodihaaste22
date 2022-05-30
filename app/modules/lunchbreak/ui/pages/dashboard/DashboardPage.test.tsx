@@ -1,11 +1,4 @@
-import {
-  fireEvent,
-  queryAllByTestId,
-  screen,
-  waitFor,
-  waitForElementToBeRemoved,
-  within,
-} from "@testing-library/react";
+import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { render } from "@mocks/testUtils";
 import DashboardPage from "./DashboardPage";
 import server from "@mocks/server";
@@ -52,9 +45,9 @@ describe("DashboardPage", () => {
 
     expect(userSelectionRestaurantDefault).toBeInTheDocument();
 
-    const restaurantItemAccordion = await screen.findByTestId("restaurantItem-accordion");
+    const voteButton = await screen.findByTestId("vote-button");
 
-    fireEvent.click(restaurantItemAccordion);
+    fireEvent.click(voteButton);
 
     await waitFor(() => {
       const userSelectionRestaurant = screen.getByTestId("subtitle");
@@ -85,9 +78,9 @@ describe("DashboardPage", () => {
   it("renders user restaurant selection on click", async () => {
     render(<DashboardPage />);
 
-    const restaurantItemAccordion = await screen.findByTestId("restaurantItem-accordion");
+    const voteButton = await screen.findByRole("button");
 
-    fireEvent.click(restaurantItemAccordion);
+    fireEvent.click(voteButton);
 
     server.use(getRestaurantsWithVote);
 

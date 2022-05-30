@@ -1,7 +1,12 @@
 import { FunctionComponent, MouseEvent, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Accordion, AccordionDetails, AccordionSummary, Box, Link, Stack, Typography } from "@mui/material";
-import { LocationOn as LocationOnIcon, MenuBook as MenuBookIcon } from "@mui/icons-material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Link, Stack, Typography } from "@mui/material";
+import {
+  LocationOn as LocationOnIcon,
+  MenuBook as MenuBookIcon,
+  ThumbDownOffAlt as ThumbDownOffAltIcon,
+  ThumbUpOffAlt as ThumbUpOffAltIcon,
+} from "@mui/icons-material";
 import { AccordionExpandIcon } from "@lunchbreak/ui/components";
 import RestaurantItemProps from "./RestaurantItem.types";
 
@@ -14,9 +19,23 @@ const RestaurantItem: FunctionComponent<RestaurantItemProps> = ({
 
   const [expanded, setExpanded] = useState(false);
 
-  const handleOnClickExpand = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-    setExpanded(!expanded);
+  const handleOnClickExpand = (event: MouseEvent<HTMLDivElement>) => setExpanded(!expanded);
+
+  const formatOpeningHoursTime = (str: string): string => {
+    if (str.includes(":")) return str;
+    return `${str}:00`;
+  };
+
+  const formatOpeningHours = (str: string): string | undefined => {
+    const arr = str.split("-");
+    const [startTime, endTime] = arr;
+
+    if (arr.length !== 2 && (!startTime || !endTime)) return undefined;
+
+    return `${t([
+      "lunchbreak:components.restaurantItem.openingHours.available",
+      "error:translations.notExistingKey",
+    ])} ${formatOpeningHoursTime(startTime)} - ${formatOpeningHoursTime(endTime)}`;
   };
 
   return (
@@ -43,8 +62,8 @@ const RestaurantItem: FunctionComponent<RestaurantItemProps> = ({
             borderRadius: 2,
           },
         }}
-        onClick={onClick}
         data-testid="restaurantItem-accordion"
+        onClick={handleOnClickExpand}
       >
         <AccordionSummary
           id="restaurant-accordion"
@@ -55,7 +74,15 @@ const RestaurantItem: FunctionComponent<RestaurantItemProps> = ({
             href={`https://www.google.com/maps?q=${name.replace(/\s/g, "+")}`}
             target="_blank"
             onClick={(e) => e.stopPropagation()}
-            sx={{ display: "flex", justifyContent: "center", alignItems: "center", color: "customTheme.main", mr: 2 }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              alignSelf: "baseline",
+              mt: "2px",
+              color: "customTheme.main",
+              mr: 2,
+            }}
           >
             <LocationOnIcon fontSize="small" />
           </Link>
@@ -64,12 +91,37 @@ const RestaurantItem: FunctionComponent<RestaurantItemProps> = ({
               {name}
             </Typography>
             <Typography variant="small" sx={{ color: "customTheme.neutral" }}>
-              {openingHours ||
+              {formatOpeningHours(openingHours) ||
                 t([
-                  "lunchbreak:components.restaurantItem.openingHoursUnavailable",
+                  "lunchbreak:components.restaurantItem.openingHours.unavailable",
                   "error:translations.notExistingKey",
                 ])}
             </Typography>
+            <Button
+              data-testid="vote-button"
+              variant="contained"
+              size="small"
+              startIcon={isSelected ? <ThumbDownOffAltIcon /> : <ThumbUpOffAltIcon />}
+              sx={{
+                width: "fit-content",
+                px: 2,
+                borderColor: "none",
+                borderRadius: "16px",
+                color: isSelected ? "customTheme.highlightRedAlt" : "customTheme.highlightGreenAlt",
+                backgroundColor: isSelected ? "customTheme.highlightRed" : "customTheme.highlightGreen",
+                mt: 1,
+                "&:hover": {
+                  color: isSelected ? "customTheme.highlightRedAlt" : "customTheme.highlightGreenAlt",
+                  backgroundColor: isSelected ? "customTheme.highlightRed" : "customTheme.highlightGreen",
+                },
+              }}
+              onClick={onClick}
+            >
+              {t([
+                `lunchbreak:components.restaurantItem.isSelected.${isSelected.toString()}`,
+                "error:translations.notExistingKey",
+              ])}
+            </Button>
           </Stack>
         </AccordionSummary>
         <AccordionDetails>

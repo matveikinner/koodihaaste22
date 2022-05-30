@@ -28,11 +28,18 @@
   },
   "components": {
     "restaurantItem": {
-      "openingHoursUnavailable": "Opening hours unavailable",
+      "openingHours": {
+        "unavailable": "Opening hours unavailable",
+        "available": "Open"
+      },
       "dishNameUnavailable": "Dish name unavailable",
       "priceUnavailable": "Price unavailable",
       "menuUnavailable": "Menu unavailable",
-      "currentSelection": "This is your current selection"
+      "currentSelection": "This is your current selection",
+      "isSelected": {
+        "false": "Vote",
+        "true": "Delete vote"
+      }
     },
     "accordionExpandIcon": {
       "votes_one": "{{ count }} vote",

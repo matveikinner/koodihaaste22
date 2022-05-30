@@ -84,9 +84,9 @@ describe("SearchPage", () => {
 
     expect(selectedRestaurantItemBefore).not.toBeInTheDocument();
 
-    const restaurantItemAccordion = within(restaurantItem).getByTestId("restaurantItem-accordion");
+    const voteButton = within(restaurantItem).getByTestId("vote-button");
 
-    fireEvent.click(restaurantItemAccordion);
+    fireEvent.click(voteButton);
 
     server.use(getRestaurantsWithVote);
 

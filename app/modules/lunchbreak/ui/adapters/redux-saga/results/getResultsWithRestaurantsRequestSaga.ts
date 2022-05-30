@@ -34,7 +34,6 @@ export function* getResultsWithRestaurantsRequestSaga({ payload }: PayloadAction
     yield put(setVote({ alreadyVoted, date }));
   } catch (err) {
     yield put(getResultsWithRestaurantsFailure());
-    console.error(err);
     // Re-throw error for exception handler
     throw err;
   }

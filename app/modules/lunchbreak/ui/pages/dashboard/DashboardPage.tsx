@@ -25,7 +25,7 @@ const DashboardPage: FunctionComponent = () => {
   // the server supports
   useInterval(() => {
     dispatch(getResultsWithRestaurantsRequest());
-  }, 60 * 1000 * 5); // Update results every 5 minutes
+  }, 60 * 1000); // Update results every minute
 
   // Fetch results and restaurants for the user chosen date
   useEffect(() => {
@@ -35,11 +35,13 @@ const DashboardPage: FunctionComponent = () => {
   // Returns restaurants which are in results and filters them by user chosen date
   const resultRestaurants = useMemo(
     () =>
-      restaurants.filter(({ id }) =>
-        results
-          .find(({ date }) => isSameDay(new Date(date), new Date()))
-          ?.results?.some((result) => result.restaurantid === id)
-      ),
+      restaurants
+        .filter(({ id }) =>
+          results
+            .find(({ date }) => isSameDay(new Date(date), new Date()))
+            ?.results?.some((result) => result.restaurantid === id)
+        )
+        .sort((a, b) => b.votes - a.votes),
     [results, restaurants]
   );
 
@@ -49,7 +51,7 @@ const DashboardPage: FunctionComponent = () => {
   const isResultRestaurantsEmpty = isEmpty(resultRestaurants) && restaurantsMeta.status === MetaStatusEnum.SUCCEEDED;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const handleOnClickRestaurantSelection = (restaurantId: string) => (event: MouseEvent<HTMLDivElement>) =>
+  const handleOnClickRestaurantSelection = (restaurantId: string) => (event: MouseEvent<HTMLButtonElement>) =>
     dispatch(submitVoteRequest(restaurantId));
 
   const getUserSelectionRestaurantName = () =>

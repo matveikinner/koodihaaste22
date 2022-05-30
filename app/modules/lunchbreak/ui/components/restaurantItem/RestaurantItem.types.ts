@@ -4,7 +4,7 @@ import { Restaurant } from "@lunchbreak/domain/models";
 interface RestaurantItemProps {
   restaurant: Restaurant;
   isSelected: boolean;
-  onClick: (event: MouseEvent<HTMLDivElement>) => void;
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default RestaurantItemProps;

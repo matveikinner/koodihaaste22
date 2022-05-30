@@ -6,7 +6,9 @@ const globalPalette: ThemeOptions["palette"] = {
     mainRGB: "246, 65, 108",
     neutral: "#818181",
     highlightGreen: "#66FFA6",
-    error: "#F70D1A",
+    highlightGreenAlt: "#1E4620",
+    highlightRed: "#FDEDED",
+    highlightRedAlt: "#5F2120",
   },
 };
 

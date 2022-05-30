@@ -45,13 +45,17 @@ declare module "@mui/material/styles/createPalette" {
     mainRGB?: string;
     neutral?: string;
     highlightGreen?: string;
-    error?: string;
+    highlightGreenAlt?: string;
+    highlightRed?: string;
+    highlightRedAlt?: string;
   }
 
   interface SimplePaletteColorOptions {
     mainRGB: string;
     neutral?: string;
     highlightGreen?: string;
-    error?: string;
+    highlightGreenAlt?: string;
+    highlightRed?: string;
+    highlightRedAlt?: string;
   }
 }

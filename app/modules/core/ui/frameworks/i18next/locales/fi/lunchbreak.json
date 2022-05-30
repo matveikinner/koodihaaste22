@@ -28,11 +28,18 @@
   },
   "components": {
     "restaurantItem": {
-      "openingHoursUnavailable": "Aukioloaika ei ole saatavilla",
+      "openingHours": {
+        "unavailable": "Aukioloaika ei ole saatavilla",
+        "available": "Avoinna"
+      },
       "dishNameUnavailable": "Annoksen nimi ei ole saatavilla",
       "priceUnavailable": "Hinta ei ole saatavilla",
       "menuUnavailable": "Ruokalista ei ole saatavilla",
-      "currentSelection": "Tämä on nykyinen valintasi"
+      "currentSelection": "Tämä on nykyinen valintasi",
+      "isSelected": {
+        "false": "Äänestä",
+        "true": "Poista ääni"
+      }
     },
     "accordionExpandIcon": {
       "votes_one": "{{ count }} ääni",
